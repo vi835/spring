@@ -23,6 +23,13 @@ for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
 }
 ```
 
+###### 二维数组
+
+```
+int[][] arr={{1,1},{3,4},{-1,0}};
+System.out.println(arr.length);// 3
+```
+
 ##### Spring
 
 ###### 优势
@@ -91,4 +98,57 @@ Bean的生命周期
 - 对象创建 当使用对象时 创建新的对象实例
 - 对象运行 只要对象在使用中 就一直活着
 - 对象销毁 当对象长时间不用时 被java的垃圾回收器回收了
+
+###### Bean实例化三种方式
+
+- 无参构造方法实例化
+- 工厂静态方法实例化
+- 工厂实例方法实例化
+
+###### Bean的依赖注入的数据类型
+
+- 普通数据类型
+- 引用数据类型
+- 集合数据类型
+
+###### List Map Properties的注入
+
+```
+     <bean id="userDao" class="com.itheima.dao.impl.UserDaoImpl" init-method="init" destroy-method="destroy">
+        <property name="userName" value="lisi"></property>
+        <property name="age" value="10"></property>
+
+        <property name="strList">
+            <list>
+                <value>aaa</value>
+                <value>bbb</value>
+                <value>ccc</value>
+            </list>
+        </property>
+
+        <property name="userMap">
+            <map>
+                <entry key="user1" value-ref="user1"></entry>
+                <entry key="user2" value-ref="user2"></entry>
+            </map>
+        </property>
+
+        <property name="properties">
+            <props>
+                <prop key="rick">hello</prop>
+                <prop key="summer">beautiful</prop>
+            </props>
+        </property>
+    </bean>
+
+    <bean id="user1" class="com.itheima.domain.User">
+        <property name="name" value="tom"></property>
+        <property name="address" value="suzhou"></property>
+    </bean>
+
+    <bean id="user2" class="com.itheima.domain.User">
+        <property name="name" value="rick"></property>
+        <property name="address" value="yangzhou"></property>
+    </bean>
+```
 

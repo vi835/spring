@@ -8,7 +8,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class SpringTest {
     @Test
     // 测试scope属性
-    public void test1(){
+    public void test1() {
         System.out.println();
         ApplicationContext app = new ClassPathXmlApplicationContext("applicationContext.xml");
         UserDao userDao1 = (UserDao) app.getBean("userDao");
@@ -19,10 +19,18 @@ public class SpringTest {
 
     @Test
     // 测试init和destroy方法
-    public void test2(){
+    public void test2() {
         ApplicationContext app = new ClassPathXmlApplicationContext("applicationContext.xml");
         UserDao userDao1 = (UserDao) app.getBean("userDao");
         System.out.println(userDao1);
-        ((ClassPathXmlApplicationContext)app).close();
+        ((ClassPathXmlApplicationContext) app).close();
+    }
+
+    @Test
+    // 测试工厂方法创建Bean对象
+    public void test3() {
+        ApplicationContext app = new ClassPathXmlApplicationContext("applicationContext.xml");
+        UserDao userDao1 = (UserDao) app.getBean("userDao");
+        System.out.println(userDao1);
     }
 }
