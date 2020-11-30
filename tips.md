@@ -152,3 +152,41 @@ Bean的生命周期
     </bean>
 ```
 
+###### spring的重点配置
+
+```
+<bean>标签
+    id属性:在容器中Bean实例的唯一标识 不允许重复
+    class属性:要实例化的Bean的全限定名
+    scope属性:Bean的作用范围 常用是singleton(默认)和prototype
+    <property>标签:属性注入
+       name属性:属性名称
+       value属性:注入的普通属性值
+       ref属性:注入的对象引用值
+       <list>标签
+       <map>标签
+       <properties>标签
+   <consrtucter-arg>标签
+<import>标签 导入其他的Spring的分文件
+```
+
+###### ApplicationContext的实现类
+
+1. ClassPathXmlApplicationContext 它是从类的根路径下加载配置文件 推荐使用这种
+2. FileSystemXmlApplicationContext 它是从磁盘路径上加载配置文件 配置文件可以在磁盘的任意位置
+3. AnnotationConfigApplicationContext 当使用注解配置容器对象时 需要使用此类来创建Spring容器 它用来读取注解
+
+```
+ ApplicationContext app = new ClassPathXmlApplicationContext("applicationContext.xml");      
+```
+
+
+
+#####  Spring配置数据源
+
+######  1.1 数据源(连接池的作用)
+
+- 数据源(连接池)是提高程序性能出现的
+- 事先实例化数据源 初始化连接部分连接资源
+- 使用连接资源时 从数据源中获取
+- 使用完毕后将连接资源归还给数据源
